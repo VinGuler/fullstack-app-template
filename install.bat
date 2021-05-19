@@ -1,4 +1,4 @@
-cd ./client
+cd ./vue-client
 npm install
-cd /../server
+cd /../nodejs-server
 npm install

@@ -8,7 +8,7 @@ import VueSocketIO from 'vue-socket.io'
 const options = { withCredentials: true }
 const socket = new VueSocketIO({
   debug: true,
-  connection: 'http://localhost:3000',
+  connection: `http://localhost:3000`,
   options,
   vuex: {
     store,

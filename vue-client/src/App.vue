@@ -10,14 +10,13 @@
 
 export default {
   name: 'App',
-  mounted () {
-    this.$store.dispatch('fetchSocketData')
-    this.$socket.emit('get-data', { data: 'data' })
-    this.$socket.on('get-data', (data) => {
-      console.log('get-data', data)
-    })
+  created () {
+    this.$store.dispatch('fetchUser')
   }
 }
 </script>
 
+<style lang="scss">
+
+</style>
 

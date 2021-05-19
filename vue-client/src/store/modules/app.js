@@ -1,6 +1,6 @@
 /**
  * App vuex module
- * Manages the WebSocket connection
+ * Manages general functionality
  */
 
 const state = {

@@ -4,37 +4,36 @@
  */
 
 const state = {
-  data: []
+  user: {},
+  messages: []
 }
 const getters = {
-  getData: state => state.data
+  getUser: state => state.user,
+  getMessages: state => state.messages
 }
 
 const mutations = {
-  setData(state, data) {
-    state.data = data
+  setUser(state, user) {
+    state.user = user
+  },
+  setMessages(state, messages) {
+    state.messages = messages
   }
 }
 
 const actions = {
   // REST API data handling
-  async fetchData ({ commit }) {
-    const response = await fetch('/get-data')
+  async fetchUser ({ commit }) {
+    const response = await fetch('http://localhost:3000/get-user')
     const body = await response.json()
-    const data = body.data
-    commit('setData', data)
+    const data = body
+    console.log('data', data)
+    commit('setUser', data)
   },
-  async updateData ({ dispatch }, data) {
-    await fetch('/post-data', { method: 'POST', body: data, headers: { 'content-type': 'application/json' } })
-    dispatch('fetchData')
-  },
-  // Socket.io data handling
-  async fetchSocketData ({ dispatch }) {
-    dispatch('sendConnectionMessage', { action: 'get-data' })
-  },
-  async updateSocketData ({ dispatch }, data) {
-    dispatch('sendConnectionMessage', { action: 'post-data', payload: data })
-  },
+  async updateUser ({ dispatch }, payload) {
+    await fetch('/update-user', { method: 'POST', body: payload, headers: { 'content-type': 'application/json' } })
+    dispatch('fetchUser')
+  }
 }
 
 export default {
