@@ -16,7 +16,6 @@ const initializeAppSocketIO = function (app) {
       { id: 1, user: 'user-1', content: 'this is a message' }
     ]
   }
-  let user = 'user-'
   io.on('connection', (socket) => {
     console.log('socket connected')
     socket.on('get-messages', () => {
